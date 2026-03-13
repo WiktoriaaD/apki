@@ -1,0 +1,3 @@
+zmien kolor tla apki
+dodaj drugi przycisk zmniejsz
+dodaj komponent Footer
