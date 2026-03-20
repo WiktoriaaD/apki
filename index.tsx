@@ -21,11 +21,10 @@ export default function App() {
       );
     }
 
-    // Nowy komponent Footer
     function Footer() {
       return (
         <View style={styles.footer}>
-          <Text style={{color: 'white', opacity: 0.7}}>© 2026 Stopka Aplikacji</Text>
+          <Text style={{color: 'white', opacity: 0.5}}>chill</Text>
         </View>
       );
     }
@@ -35,10 +34,9 @@ export default function App() {
         <SafeAreaView style={styles.container}>
           <Header />
 
-          <Text style={styles.title}>Licznik :3</Text>
+          <Text style={styles.title}>Licznik</Text>
           <Text style={styles.counter}>{count}</Text>
           
-          {/* Kontener na przyciski obok siebie */}
           <View style={styles.buttonRow}>
             <Pressable
               style={styles.buttonOpen}
@@ -50,9 +48,9 @@ export default function App() {
               <Text style={styles.textStyle}>Zwiększ</Text>
             </Pressable>
 
-            {/* Drugi przycisk: Zmniejsz */}
+            
             <Pressable
-              style={[styles.buttonOpen, { backgroundColor: '#FF5252' }]}
+              style={[styles.buttonOpen, { backgroundColor: '#446e75ff' }]}
               onPress={() => setCount(count - 1)}
             >
               <Text style={styles.textStyle}>Zmniejsz</Text>
@@ -68,7 +66,6 @@ export default function App() {
               setModalVisible(!modalVisible);
             }}
           >
-            {/* Poprawione z <收获> na <View> */}
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
                 <Text style={styles.modalText}>xoxo</Text>
@@ -134,7 +131,7 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     buttonOpen: {
-        backgroundColor: "#F194FF",
+        backgroundColor: "#ee86b1ff",
         borderRadius: 20,
         padding: 15,
         elevation: 2,
