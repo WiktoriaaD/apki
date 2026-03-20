@@ -1,25 +1,22 @@
+import Header from '@/components/Header';
+import ListItem from '@/components/ListItem';
 import React, { useState } from 'react';
 import {
-  Alert,
-  Modal,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View
 } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
-    const [count, setCount] = useState<number>(0);
+    const [count, setCount] = useState(0);
     const [modalVisible, setModalVisible] = useState(false);
-
-    function Header(){
-      return ( 
-        <View style={styles.header}>
-          <Text style={{fontSize: 24, color: 'white'}}>Aplikacja Studencka</Text>
-        </View>
-      );
-    }
+    const events = [
+      { id: 1,title: "Wykład React", description: "Sala A1, 10:00", location: "Budynek A"},
+      { id: 2,title: "Warsztaty AI", description: "Sala B2, 12:00", location: "Budynek B"},
+      { id: 3,title: "Spotkanie Koła", description: "Sala C3, 15:00",location: "Budynek C",isHightlighted: true},
+    ]
 
     function Footer() {
       return (
@@ -30,9 +27,20 @@ export default function App() {
     }
 
     return (
-      <SafeAreaProvider>
-        <SafeAreaView style={styles.container}>
-          <Header />
+        <View style={styles.container}>
+          <Header title="Smart Campus" />
+
+          <ScrollView>
+            {events.map((event) => (
+              <ListItem
+                key={event.id}
+                title={event.title}
+                description={event.description}
+                location={event.location}
+                isHighlighted={event.isHightlighted||false}
+              />
+            ))}
+          </ScrollView>
 
           <Text style={styles.title}>Licznik</Text>
           <Text style={styles.counter}>{count}</Text>
@@ -42,7 +50,7 @@ export default function App() {
               style={styles.buttonOpen}
               onPress={() => {
                 setCount(count + 1);
-                setModalVisible(true);
+                
               }}
             >
               <Text style={styles.textStyle}>Zwiększ</Text>
@@ -56,34 +64,9 @@ export default function App() {
               <Text style={styles.textStyle}>Zmniejsz</Text>
             </Pressable>
           </View>
-          
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-              Alert.alert("Modal został zamknięty");
-              setModalVisible(!modalVisible);
-            }}
-          >
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <Text style={styles.modalText}>xoxo</Text>
-
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setModalVisible(false)}
-                >
-                  <Text style={styles.textStyle}>Zamknij</Text>
-                </Pressable>
-              </View>
-            </View>
-          </Modal>
 
           <Footer />
-
-        </SafeAreaView>
-      </SafeAreaProvider>
+        </View>
     );
 }
 
@@ -93,9 +76,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#ff9f9fff",
         alignItems: "center",
         justifyContent: "center",
-    },
-    header: {
-        marginBottom: 20,
     },
     footer: {
         marginTop: 40,
@@ -122,16 +102,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: 'rgba(0,0,0,0.5)'
     },
-    modalView: {
-        margin: 20,
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        elevation: 5,
-    },
     buttonOpen: {
-        backgroundColor: "#ee86b1ff",
+        backgroundColor: "#94516dff",
         borderRadius: 20,
         padding: 15,
         elevation: 2,
@@ -143,17 +115,9 @@ const styles = StyleSheet.create({
         elevation: 2,
         marginTop: 10,
     },
-    buttonClose: {
-        backgroundColor: "#2196F3",
-    },
     textStyle: {
         color: "white",
         fontWeight: "bold",
         textAlign: "center",
     },
-    modalText: {
-        marginBottom: 15,
-        textAlign: "center",
-        fontSize: 20,
-    }
 });
