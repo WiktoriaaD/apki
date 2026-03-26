@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from 'react';
 
 type ListItemProps = {
     title: string;
@@ -8,8 +9,18 @@ type ListItemProps = {
 }
 
 export default function ListItem({title, description, location, isHighlighted}: ListItemProps){
+    const [isHovered, setIsHovered] = useState(false);
     return (
-        <View style={[styles.container, isHighlighted && styles.isHighlighted]}>
+        <View 
+          // @ts-ignore (nwm)
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          style={[
+            styles.container, 
+            isHighlighted && styles.isHighlighted,
+            isHovered && { backgroundColor: '#abf5ff' } // kolor najechania
+          ]}
+        >
             <Text style={styles.title}>{title}</Text>
             <Text>{description}</Text>
             <Text style={styles.location}>{location}</Text>
