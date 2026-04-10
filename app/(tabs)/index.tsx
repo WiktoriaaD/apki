@@ -8,12 +8,16 @@ import HomeScreen from "../screens/HomeScreen";
 export type RootStackParamList = {
    Home: undefined;
    Details: { 
+    id: number;
     title: string; 
-    description:string };
+    description:string
+    location?: string;
+    hour?: string;
+   };
 };
 
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
     return (
         
