@@ -1,49 +1,50 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { useState } from 'react';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 type ListItemProps = {
     title: string;
     description: string;
-    location: string;
-    isHighlighted: boolean;
+    location?: string;
+    onPress?: () => void;
+    hour?: string;
 }
 
-export default function ListItem({title, description, location, isHighlighted}: ListItemProps){
-    const [isHovered, setIsHovered] = useState(false);
+export default function ListItem({title, onPress, hour}: ListItemProps){
     return (
-        <View 
-          // @ts-ignore (nwm)
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          style={[
-            styles.container, 
-            isHighlighted && styles.isHighlighted,
-            isHovered && { backgroundColor: '#abf5ff' } // kolor najechania
-          ]}
-        >
+        <TouchableOpacity onPress={onPress} style={[styles.container]}>
             <Text style={styles.title}>{title}</Text>
-            <Text>{description}</Text>
-            <Text style={styles.location}>{location}</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#27727eff',
+      backgroundColor: '#f3f5f5ff',
         padding: 10,
         alignItems: 'center',
+        borderRadius: 10,
+        marginVertical: 5,
+        width: 300,
+        alignSelf: 'center',
     },
     title: {
         fontSize: 20,
-        color: 'white',
+        color: 'black',
         fontWeight: 'bold',
     },
     location: {
         fontSize: 14,
-        color: 'white',
+        color: 'black',
     },
     isHighlighted: {
         backgroundColor: '#4cc4d6ff',
+    },
+    description: {
+        fontSize: 16,
+        color: 'black',
+    },
+    hour: {
+        fontSize: 14,
+        color: 'black',
     },
 });
