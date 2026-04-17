@@ -1,15 +1,8 @@
-import { RouteProp } from '@react-navigation/native';
 import { StyleSheet, Text, View } from "react-native";
-import { RootStackParamList } from "../(tabs)/index";
-
-type DetailsScreenRouteProp = RouteProp<RootStackParamList, "Details">;
-
-type DetailsScreenProps = {
-    route: DetailsScreenRouteProp;
-};
+import { DetailsScreenProps } from "../../types/Detail";
 
 export default function DetailScreen({route}: DetailsScreenProps) {
-    const { title, description, location,hour} = route.params;
+    const { title, description, location,hour, category} = route.params;
   //   const events = [
   //   { id: 1, title: "Wykład React", description: "Sala A1, 10:00", location: "Budynek A" },
   //   { id: 2, title: "Warsztaty AI", description: "Sala B2, 12:00", location: "Budynek C" },
@@ -26,6 +19,7 @@ export default function DetailScreen({route}: DetailsScreenProps) {
     return (
         <View style={styles.container}>
           <Text style={styles.title}>{title}</Text>
+          <Text style={styles.category}>{category}</Text>
           <Text style={styles.description}>{description}</Text>
           <Text style={styles.location}>{location}</Text>
           <Text style={styles.location}>{hour}</Text>
@@ -45,18 +39,20 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 28,
         fontWeight: "bold",
+        
     },
     location
       : {
         fontSize: 16,
         marginTop: 10,
     },
-    subtitle: {
-        fontSize: 16,
+    category: {
+        fontSize: 26,
         marginTop: 10,
     },
     description: {
         fontSize: 18,
         marginTop: 20,
+        fontFamily: "Courier New",
     },
 });
