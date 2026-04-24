@@ -4,6 +4,7 @@ export type RootStackParamList = {
    Details: { 
     id: number;
     title: string; 
+    speaker: string;
     description:string
     location: string;
     hour: string;

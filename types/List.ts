@@ -5,4 +5,5 @@ export type ListItemProps = {
     location?: string;
     onPress?: () => void;
     hour?: string;
+    speaker?: string;
 }
