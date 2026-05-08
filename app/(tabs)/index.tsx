@@ -6,16 +6,37 @@ import DetailScreen from "../screens/DetailScreen";
 import HomeScreen from "../screens/HomeScreen";
 
 
+
+
+
+import ApiPostDetailsScreen from "../screens/ApiPostDetailsScreen";
+import ApiPostsScreen from "../screens/ApiPostsScreen";
 const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
-    return (
-        
-            <Stack.Navigator>
-                <Stack.Screen name="Home" component={HomeScreen} />
-                <Stack.Screen name="Details" component={DetailScreen} />
-            </Stack.Navigator>
-        
-    );
+return (
+<Stack.Navigator>
+<Stack.Screen
+name="Home"
+component={HomeScreen}
+options={{ title: "Start" }}
+/>
+<Stack.Screen
+name="Details"
+component={DetailScreen}
+options={{ title: "Szczegóły wydarzenia" }}
+/>
+<Stack.Screen
+name="ApiPosts"
+component={ApiPostsScreen}
+options={{ title: "Posty z API" }}
+/>
+<Stack.Screen
+name="ApiPostDetails"
+component={ApiPostDetailsScreen}
+options={{ title: "Szczegóły posta" }}
+/>
+</Stack.Navigator>
+);
 }
 
 // const styles = StyleSheet.create({

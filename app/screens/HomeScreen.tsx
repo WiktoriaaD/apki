@@ -4,9 +4,8 @@ import ListItem from "@/components/ListItem";
 import { events as initialEvents } from "@/data/events";
 import { HomeScreenProps } from "@/types/Home";
 import { useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import { Event } from "../../types/Event";
-
 
 
 
@@ -36,6 +35,10 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
   return (
     <View style={styles.container}>
       <Header title="Smart Campus" />
+      <Button
+      title="Pokaż posty z API "
+      onPress={() => navigation.navigate("ApiPosts")}
+      />
       <AddEventForm onAddEvent={addEvent} />
 
       {/* <Pressable 
