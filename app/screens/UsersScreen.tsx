@@ -1,8 +1,6 @@
-import ApiPostItem from "@/components/ApiPostItem";
+import UserItem from "@/components/UserItem";
 import { useFetch } from "@/hooks/useFetch";
-import { RootStackParamList } from "@/types/Navigation";
-import { Post } from "@/types/Post";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { User } from "@/types/User";
 import {
     ActivityIndicator,
     FlatList,
@@ -10,20 +8,18 @@ import {
     Text,
     View,
 } from "react-native";
-type ApiPostsScreenProps = {
-navigation: NativeStackNavigationProp<RootStackParamList, "ApiPosts">;
-};
-export default function ApiPostsScreen({ navigation }: ApiPostsScreenProps) {
+
+export default function UsersScreen() {
 const {
-data: posts,
+data: users,
 isLoading,
 error,
-} = useFetch<Post[]>("https://jsonplaceholder.typicode.com/posts");
+} = useFetch<User[]>("https://jsonplaceholder.typicode.com/users");
 if (isLoading) {
 return (
 <View style={styles.centered}>
 <ActivityIndicator size="large" />
-<Text style={styles.infoText}>Ładowanie danych...</Text>
+<Text style={styles.infoText}>Ładowanie użytkowników...</Text>
 </View>
 );
 }
@@ -36,22 +32,16 @@ return (
 }
 return (
 <View style={styles.container}>
-<Text style={styles.header}>Posty z API</Text>
+<Text style={styles.header}>Użytkownicy</Text>
 <FlatList
-data={posts ?? []}
+data={users ?? []}
 keyExtractor={(item) => item.id.toString()}
 renderItem={({ item }) => (
-<ApiPostItem
-id={item.id}
-title={item.title}
-body={item.body}
-onPress={() =>
-navigation.navigate("ApiPostDetails", {
-id: item.id,
-title: item.title,
-body: item.body,
-})
-}
+<UserItem
+name={item.name}
+username={item.username}
+email={item.email}
+onPress={() => console.log("Kliknięto użytkownika:", item.id)}
 />
 )}
 />

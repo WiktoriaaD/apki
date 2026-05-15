@@ -36,6 +36,16 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
     <View style={styles.container}>
       <Header title="Smart Campus" />
       <Button
+      title="Pokaż użytkowników z API"
+      onPress={() => navigation.navigate("Users")}
+      />
+      <Button
+        title="Przejdź do Todo"
+        onPress={() =>
+          navigation.navigate("Todos")
+        }
+      />
+      <Button
       title="Pokaż posty z API "
       onPress={() => navigation.navigate("ApiPosts")}
       />

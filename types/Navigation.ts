@@ -16,4 +16,6 @@ id: number;
 title: string;
 body: string;
 };
+Users: undefined;
+Todos: undefined;
 };

@@ -4,13 +4,14 @@ import React from 'react';
 
 import DetailScreen from "../screens/DetailScreen";
 import HomeScreen from "../screens/HomeScreen";
-
+import UsersScreen from '../screens/UsersScreen';
 
 
 
 
 import ApiPostDetailsScreen from "../screens/ApiPostDetailsScreen";
 import ApiPostsScreen from "../screens/ApiPostsScreen";
+import { TodoScreen } from '../screens/ToDoScreen';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
 return (
@@ -24,6 +25,15 @@ options={{ title: "Start" }}
 name="Details"
 component={DetailScreen}
 options={{ title: "Szczegóły wydarzenia" }}
+/>
+ <Stack.Screen
+        name="Todos"
+        component={TodoScreen}
+    />
+<Stack.Screen
+name="Users"
+component={UsersScreen}
+options={{ title: "Użytkownicy" }}
 />
 <Stack.Screen
 name="ApiPosts"
